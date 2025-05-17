@@ -26,6 +26,7 @@ try:
     lista_numeros = [int (n) for n in entrada_lista.split()]
 except ValueError:
     mensagem_de_erro()
+    
 
 while True: 
     try:   
