@@ -18,14 +18,18 @@ def pesquisa_binaria (lista,item):
         
     return None
 
+def entrada_lista():
+    (input("Digite uma lista de números, separando-os por espaços:")).strip()
+
 def mensagem_de_erro():
     print("Você digitou um caractere inválido!\n")
 
 try: 
-    entrada_lista = (input("Digite uma lista de números, separando-os por espaços:")).strip()
+    entrada_lista()
     lista_numeros = [int (n) for n in entrada_lista.split()]
 except ValueError:
     mensagem_de_erro()
+    entrada_lista()
 
 while True: 
     try:   
