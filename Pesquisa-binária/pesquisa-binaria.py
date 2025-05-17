@@ -21,14 +21,19 @@ def pesquisa_binaria (lista,item):
     return None
 
 while True: 
-    try:
-        int(numero)
-    except ValueError:
-        print("Você digitou um caractere inválido, digite um número!")
-    
-    if resultado_posicao is not None:
-        print(f'O número está na posição', (resultado_posicao))
+    try:   
+        numero = int(input('Digite o número que deseja procurar:\n'))
+        resultado_posicao = pesquisa_binaria(minha_lista, numero)
 
-    else:
-        print('Digite um número presente na lista')
+        if resultado_posicao is not None:
+            print(f'O número está na posição', (resultado_posicao))
+        else:
+            print('Digite um número presente na lista\n')
+
+    except ValueError:
+        print("Você digitou um caractere inválido, digite um número!\n")
+        continue
+    
+    
+  
         
