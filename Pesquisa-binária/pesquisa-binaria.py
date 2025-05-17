@@ -17,14 +17,18 @@ def pesquisa_binaria (lista,item):
         
         else:
             baixo = meio + 1
-
+        
     return None
 
-numero = int(input('Digite o número que deseja procurar:  '))
-resultado_posicao = pesquisa_binaria(minha_lista, numero)
+while True: 
+    try:
+        int(numero)
+    except ValueError:
+        print("Você digitou um caractere inválido, digite um número!")
+    
+    if resultado_posicao is not None:
+        print(f'O número está na posição', (resultado_posicao))
 
-if resultado_posicao is not None:
-    print(f'O número está na posição', pesquisa_binaria(minha_lista, numero))
-
-else:
-    print('Digite um número presente na lista')
+    else:
+        print('Digite um número presente na lista')
+        
