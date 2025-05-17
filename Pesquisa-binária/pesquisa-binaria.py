@@ -1,17 +1,30 @@
-def pesquisa_binaria (item,lista):
-    baixo = 0
-    alto = len(lista)-1
-
-    while baixo <= alto:
-        meio = (baixo + alto)//2
-        chute = lista[meio]
-
-        if chute < meio:
-    baixo = 0 + 1
-else:
-    alto = len(lista)
-
-
 minha_lista = [9,11,13,15,17,19,21]
 
+def pesquisa_binaria (lista,item):
+    baixo = 0
+    alto = len(lista) - 1
 
+    while baixo <= alto:
+        
+        meio = (baixo + alto)//2
+        valor_meio = lista[meio]
+            
+        if valor_meio == item:
+            return meio
+        
+        elif valor_meio > item:
+            alto = meio - 1
+        
+        else:
+            baixo = meio + 1
+
+    return None
+
+numero = int(input('Digite o número que deseja procurar:  '))
+resultado_posicao = pesquisa_binaria(minha_lista, numero)
+
+if resultado_posicao is not None:
+    print(f'O número está na posição', pesquisa_binaria(minha_lista, numero))
+
+else:
+    print('Digite um número presente na lista')
