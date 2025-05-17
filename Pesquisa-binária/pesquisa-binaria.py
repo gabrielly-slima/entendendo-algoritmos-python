@@ -1,5 +1,3 @@
-minha_lista = [9,11,13,15,17,19,21]
-
 def pesquisa_binaria (lista,item):
     baixo = 0
     alto = len(lista) - 1
@@ -20,20 +18,27 @@ def pesquisa_binaria (lista,item):
         
     return None
 
+def mensagem_de_erro():
+    print("Você digitou um caractere inválido!\n")
+
+try: 
+    entrada_lista = (input("Digite uma lista de números, separando-os por espaços:")).strip()
+    lista_numeros = [int (n) for n in entrada_lista.split()]
+except ValueError:
+    mensagem_de_erro()
+
 while True: 
     try:   
         numero = int(input('Digite o número que deseja procurar:\n'))
-        resultado_posicao = pesquisa_binaria(minha_lista, numero)
+        resultado_posicao = pesquisa_binaria(lista_numeros, numero)
 
         if resultado_posicao is not None:
             print(f'O número está na posição', (resultado_posicao))
         else:
             print('Digite um número presente na lista\n')
+        
 
     except ValueError:
-        print("Você digitou um caractere inválido, digite um número!\n")
+        mensagem_de_erro()
         continue
     
-    
-  
-        
