@@ -19,29 +19,41 @@ def pesquisa_binaria (lista,item):
     return None
 
 def mensagem_de_erro():
-    print("Você digitou um caractere inválido!\n")
+    print("Você digitou caracteres inválidos!\n")
 
-while True:
-    try: 
-        entrada_lista = (input("Digite uma lista de números, separando-os por espaços:")).strip()
-        lista_numeros = [int (n) for n in entrada_lista.split()]
-        break
-    except ValueError:
-        mensagem_de_erro()
+def voltar_para_lista():
+    resposta = input("Digite VOLTAR, se quiser escrever novamente os números da LISTA").upper().strip()
+    return resposta == "VOLTAR"
     
+print("MENU INICIAL:\n")
+lista_inicial()
+print("Sua lista é: ")
 
-while True: 
-    try:   
-        numero = int(input('Digite o número que deseja procurar:\n'))
-        resultado_posicao = pesquisa_binaria(lista_numeros, numero)
 
-        if resultado_posicao is not None:
-            print(f'O número está na posição', (resultado_posicao))
-        else:
-            print('Digite um número presente na lista\n')
+
+def lista_inicial():
+    while True:
+        try: 
+            entrada_lista = (input("Digite uma lista de números, separando-os por espaços:")).strip()
+            = [int (n) for n in entrada_lista.split()]
             break
-
-    except ValueError:
-        mensagem_de_erro()
-        continue
+        except ValueError:
+            mensagem_de_erro()
     
+def buscar_numero():
+    while True: 
+        try:   
+            numero = int(input('Digite o número que deseja procurar:\n'))
+            resultado_posicao = pesquisa_binaria(lista_numeros, numero)
+
+            if resultado_posicao is not None:
+                print(f'O número está na posição', (resultado_posicao))
+        
+            else:
+                print('Digite um número presente na lista\n')
+
+        except ValueError:
+            mensagem_de_erro()
+            continue
+
+
