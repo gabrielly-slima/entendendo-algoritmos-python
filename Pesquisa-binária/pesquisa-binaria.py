@@ -9,10 +9,8 @@ def pesquisa_binaria (lista, numero_procurado):
             
         if valor_meio == numero_procurado:
             return meio
-        
         elif valor_meio > numero_procurado:
             alto = meio - 1
-        
         else:
             baixo = meio + 1
         
@@ -22,8 +20,13 @@ def mensagem_de_erro():
     print("Você digitou caracteres inválidos!\n")
 
 def voltar_para_lista():
-    resposta = input("Digite VOLTAR, se quiser escrever novamente os números da lista, ou aperte ENTER se decidir continuar procurando os números\n").upper().strip()
-    return resposta == "VOLTAR"
+        resposta = input("Digite VOLTAR, se quiser escrever novamente os números da lista, ou aperte ENTER se decidir continuar procurando os números\n").upper().strip()
+
+        if resposta == "VOLTAR":
+            return True
+        elif resposta != "":
+            print("Entrada inválida! Continuando a busca com a mesma lista...")
+        return False
 
 def menu_inicial():
     while True:
@@ -50,10 +53,8 @@ def buscar_numero(lista_numeros):
 
             if resultado_posicao is not None:
                 print(f"O número está na posição {resultado_posicao}")
-        
             else:
                 print("Número não encontrado...Digite um número presente na lista!\n")
-            
             if voltar_para_lista():
                 return "VOLTAR"
 
