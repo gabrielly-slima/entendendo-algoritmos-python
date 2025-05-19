@@ -28,8 +28,14 @@ except ValueError:
     mensagem_de_erro()
 
 while True: 
-    try:   
-        numero = int(input("Digite o número que deseja procurar:\n"))
+    entrada = input("Digite o número que deseja procurar: \n Para sair digite SAIR\n").strip().upper()
+
+    if entrada == "SAIR":
+        print("Encerrando sua busca...")
+        break
+    
+    try: 
+        numero = int(entrada)
         resultado_posicao = pesquisa_binaria(lista_numeros, numero)
 
         if resultado_posicao is not None:
