@@ -6,7 +6,7 @@ A pesquisa binária é um algoritmo. Sua entrada é uma lista ordenada de elemen
 Se o elemento que você buscar estiver na lista, a pesquisa binária retorna o índice de sua localização e caso não encontre, a pesquisa binária retorna None.
 
 ## Funcionalidade:
-Ao contrário da pesquisa simples, a pesquisa binária retorna com eficiência e rapidez a posição do item buscado. Isso porque, na pesquisa simples é analisado um item por vez até encontrar o alvo. Enquanto na pesquisa binária, o tempo de busca é reduzido pois divide-se repetidamente a lista no meio aplicando-se um método de comparação na procura. A pesquisa binária, essa forma tão eficiente de buscar por elementos numa lista funciona da seguinte forma:
+Ao contrário da pesquisa simples, a pesquisa binária retorna com eficiência e rapidez a posição do item buscado. Isso porque, na pesquisa simples é analisado um item por vez até encontrar o alvo. Enquanto na pesquisa binária, o tempo de busca é reduzido pois divide-se repetidamente a lista no meio aplicando-se um método de comparação na procura. A pesquisa binária, essa forma tão eficiente de buscar por elementos numa lista, funciona da seguinte forma:
 
 1. Começa pelo item que está no meio (retornando o índice de sua posição);
 ##### Obs: O índice refere-se ao número que identifica a posição de um elemento dentro de uma sequência. O índice começa em 0, e cada elemento subsequente tem o índice incrementado em 1.
