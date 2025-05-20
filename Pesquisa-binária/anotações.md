@@ -2,7 +2,8 @@
 ---
 
 ## O que é?
-A pesquisa binária é um algoritmo. Sua entrada é uma lista ordenada de elementos. Se o elemento que você buscar estiver na lista, a pesquisa binária retorna o índice de sua localização e caso não encontre, a pesquisa binária retorna None.
+A pesquisa binária é um algoritmo. Sua entrada é uma lista ordenada de elementos. 
+Se o elemento que você buscar estiver na lista, a pesquisa binária retorna o índice de sua localização e caso não encontre, a pesquisa binária retorna None.
 
 ## Funcionalidade:
 Ao contrário da pesquisa simples, a pesquisa binária retorna com eficiência e rapidez a posição do item buscado. Isso porque, na pesquisa simples é analisado um item por vez até encontrar o alvo. Enquanto na pesquisa binária, o tempo de busca é reduzido pois divide-se repetidamente a lista no meio aplicando-se um método de comparação na procura. A pesquisa binária, essa forma tão eficiente de buscar por elementos numa lista funciona da seguinte forma:
