@@ -46,13 +46,13 @@ Quantas vezes você consegue dividir uma lista ao meio até sobrar só 1 element
 
 A resposta está na conta:
 
-$n / 2^x = 1$
+**$n / 2^x = 1$**
 
 Ou seja, depois de x divisões por 2, sobra só 1 item.
 
 Agora, vamos isolar o x (que representa o número de comparações feitas):
 
-$x = log₂(n)$
+**$x = log₂(n)$**
 
 Esse "logaritmo na base 2" quer dizer quantas vezes o número n pode ser dividido por 2 até chegar em 1.
 
