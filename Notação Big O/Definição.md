@@ -7,7 +7,9 @@ A notação Big O não fornece a comparação do tempo em segundos entre uma pes
 
 $O         (n)$
 
-&#8593;    &#8593;     
+&#8593;    &#8593;    
+
+Big O      Número de operações
 
 
  
