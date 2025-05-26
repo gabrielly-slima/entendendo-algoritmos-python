@@ -31,6 +31,18 @@ def pedidos():
     print(f"O sabor que teve mais pedidos foi o de {sabor}, com {num_pedidos} pedidos")
 
 def ordenacao():
+    '''
+    Ordena e retorna a lista de sabores de pastéis com seus respectivos números de pedidos, 
+    em ordem crescente (do menos pedido ao mais pedido).
+
+    A função faz uma cópia da lista 'pasteis' e, utilizando uma lógica de ordenação por seleção,
+    encontra o sabor com menor número de pedidos a cada ciclo. 
+    Esse item é removido da cópia e adicionado na lista 'painel', que representa a lista ordenada.
+
+    Retorna:
+    painel (list): Lista de tuplas (sabor, quantidade de pedidos) ordenada do menor para o maior.
+    '''
+    
     lista_copia = pasteis.copy()
     painel = []
     while lista_copia:
