@@ -4,9 +4,9 @@ Imagine que você é o dono de uma pastelaria. Hoje vai acontecer o "Concurso do
 Você recebe uma lista desordenada com os nomes dos sabores e a quantidade de pedidos de cada um. Seu desafio é ordenar essa lista do pastel mais pedido até o menos pedido, utilizando a lógica da ordenação por seleção.
 """
 
-pasteis = [["carne","45"],["queijo","26"],["frango","53"],["calabresa","18"],["pizza","31"]]
+pasteis = [["carne","45"],["queijo","26"],["frango","53"],["calabresa","68"],["pizza","31"]]
 
-def mais_pedido():
+def pedidos():
     num_pedidos = (int(pasteis[0][1]))
     for i in range(len(pasteis)):
         try:
@@ -17,4 +17,21 @@ def mais_pedido():
         except ValueError:
             print("deu bosta")
 
-mais_pedido()
+def ordenacao():
+    lista_copia = pasteis.copy()
+    painel = []
+    while lista_copia:
+        menor_valor = (int(lista_copia[0][1]))
+        indice_menor_valor = 0
+        for i in range(len(lista_copia)):
+            if menor_valor > (int(lista_copia[i][1])):
+                menor_valor = (int(lista_copia[i][1]))
+                indice_menor_valor = i
+        lista_copia.pop(indice_menor_valor)
+        painel.append(menor_valor)
+    return painel
+
+
+
+resultado = ordenacao()
+print(resultado)
