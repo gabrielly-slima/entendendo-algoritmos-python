@@ -7,17 +7,28 @@ Você recebe uma lista desordenada com os nomes dos sabores e a quantidade de pe
 pasteis = [["carne","45"],["queijo","26"],["frango","53"],["calabresa","68"],["pizza","31"]]
 
 def pedidos():
-    num_pedidos = (int(pasteis[0][1]))
-    sabor = pasteis[0][0]
-    for i in range(len(pasteis)):
+    '''
+    Retorna o sabor que obteve o maior número de pedidos e seu respectivo valor.
+
+    Esta função percorre a lista 'pasteis', compara a quantidade de pedidos de cada sabor 
+    e imprime o sabor mais pedido junto com a quantidade de pedidos.
+    '''
+
+    # Inicializa com o primeiro sabor e sua quantidade como os maiores encontrados até o momento
+    num_pedidos = (int(pasteis[0][1])) 
+    sabor = pasteis[0][0] 
+
+    # Percorre toda a lista para encontrar o maior número de pedidos
+    for i in range(len(pasteis)): 
         try:
             if int(pasteis[i][1]) > num_pedidos:
-                num_pedidos = int(pasteis[i][1])
-                sabor = pasteis[i][0]
+                num_pedidos = int(pasteis[i][1]) # Atualiza o maior número de pedidos
+                sabor = pasteis[i][0]  # Atualiza o sabor correspondente
         except ValueError:
             print("Algo deu errado")
+    
+    # Exibe o sabor com mais pedidos
     print(f"O sabor que teve mais pedidos foi o de {sabor}, com {num_pedidos} pedidos")
-
 
 def ordenacao():
     lista_copia = pasteis.copy()
