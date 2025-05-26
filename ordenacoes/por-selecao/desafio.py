@@ -26,7 +26,7 @@ def ordenacao():
         menor_valor = (int(lista_copia[0][1]))
         indice_menor_valor = 0
         for i in range(len(lista_copia)):
-            if menor_valor > (int(lista_copia[i][1])):
+            if menor_valor < (int(lista_copia[i][1])):
                 menor_valor = (int(lista_copia[i][1]))
                 indice_menor_valor = i
         painel.append(lista_copia.pop(indice_menor_valor))
@@ -35,9 +35,9 @@ def ordenacao():
     return painel
 
 def main(): 
-    print("Concurso dos Sabores de Pastel\n")
+    print("Concurso dos Sabores de Pastel\n Confira o favorito aqui embaixo:\n")
     pedidos()
-    print("Confira a lista aqui embaixo:\n")
+    print("Lista dos mais pedidos:\n")
     ordenacao()
 
 main()
