@@ -8,14 +8,16 @@ pasteis = [["carne","45"],["queijo","26"],["frango","53"],["calabresa","68"],["p
 
 def pedidos():
     num_pedidos = (int(pasteis[0][1]))
+    sabor = pasteis[0][0]
     for i in range(len(pasteis)):
         try:
             if int(pasteis[i][1]) > num_pedidos:
                 num_pedidos = int(pasteis[i][1])
                 sabor = pasteis[i][0]
-                print(f"O sabor que teve mais pedidos foi o de {sabor}, com {num_pedidos} pedidos")
         except ValueError:
-            print("deu bosta")
+            print("Algo deu errado")
+    print(f"O sabor que teve mais pedidos foi o de {sabor}, com {num_pedidos} pedidos")
+
 
 def ordenacao():
     lista_copia = pasteis.copy()
@@ -27,11 +29,15 @@ def ordenacao():
             if menor_valor > (int(lista_copia[i][1])):
                 menor_valor = (int(lista_copia[i][1]))
                 indice_menor_valor = i
-        lista_copia.pop(indice_menor_valor)
-        painel.append(menor_valor)
+        painel.append(lista_copia.pop(indice_menor_valor))
+    for i in painel:
+        print(f"Sabor: {i[0]}, Pedidos: {i[1]}")
     return painel
 
+def main(): 
+    print("Concurso dos Sabores de Pastel\n")
+    pedidos()
+    print("Confira a lista aqui embaixo:\n")
+    ordenacao()
 
-
-resultado = ordenacao()
-print(resultado)
+main()
