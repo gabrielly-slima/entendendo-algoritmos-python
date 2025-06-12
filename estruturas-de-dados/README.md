@@ -16,9 +16,9 @@ print(frutas) #["maçã","banana","abacaxi","morango","uva"]
 
 ##### Métodos mais utilizados
 - .append() - Serve para adicionar item no fim da lista
-- .insert(i, x): insere na posição i.
-- .remove(x): remove o primeiro item com valor x.
-- .sort(): ordena a lista.
+- .insert(i, x): insere na posição i
+- .remove(x): remove o primeiro item com valor x
+- .sort(): ordena a lista
 
 ## Tuplas
 ---
