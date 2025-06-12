@@ -5,7 +5,7 @@ Nesta pasta estão organizadas anotações e códigos sobre diferentes algoritmo
 ## Algoritmos disponíveis:
 
 - [Ordenação por Seleção](./selecao.md)  
-- [Ordenação por Inserção](./insercao.md)  
-- [Ordenação Bolha](./bolha.md)  
-- [Quicksort](./quicksort.md)  
+- [Ordenação por Inserção] 
+- [Ordenação Bolha]
+- [Quicksort]
 - [Mergesort](./mergesort.md)  
