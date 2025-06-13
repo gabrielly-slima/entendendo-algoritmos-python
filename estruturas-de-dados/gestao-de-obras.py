@@ -12,3 +12,47 @@
 # Usar classes: Obra, Funcionario, Gasto.
 # Armazenar dados do dia numa lista ou dicionário.
 # No final, usar print() para o resumo dos custos.
+import re
+
+class Usuario:
+    def __init__(self,nome,email,senha):
+        self.nome = nome
+        self.email = email
+        self.senha = senha
+    
+    def sucesso(self):
+        print(f"{self.nome}, bem-vinda a GESTÃO OBRAS - BFX")
+    
+
+
+class Obra:
+    def __init__(self,lugar,dia):
+        self.lugar = lugar
+        self.dia = dia  
+    
+
+
+def main():
+    print("GESTÃO OBRAS - BFX\n")
+    print("LOG-IN")
+    nome = input("Digite seu nome:")
+
+    while True:
+        try:
+            email = input("Digite seu e-mail:")
+            validacao = re.search(r".com",email)
+            if validacao:
+                senha = input("Digite sua senha:")
+
+                criar_usuario = Usuario(nome,email,senha)
+                criar_usuario.sucesso()
+                return criar_usuario
+            
+        except ValueError:
+            print("E-mail inválido")  
+            continue
+
+            
+            
+
+main()
