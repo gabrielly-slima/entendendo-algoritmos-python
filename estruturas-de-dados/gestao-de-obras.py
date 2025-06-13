@@ -13,8 +13,9 @@
 # Armazenar dados do dia numa lista ou dicionário.
 # No final, usar print() para o resumo dos custos.
 import re
+import hashlib
 
-class Usuario:
+class Interface_usuario:
     def __init__(self,nome,email,senha):
         self.nome = nome
         self.email = email
@@ -22,6 +23,13 @@ class Usuario:
     
     def sucesso(self):
         print(f"{self.nome}, bem-vinda a GESTÃO OBRAS - BFX")
+        try:
+            menu_principal = int(input("MENU PRINCIPAL\n1. Adicionar obra\n2.Ver Relatórios\n3. Consultar gastos"))
+            if menu_principal == 1:
+                Obra.adicionar_obra()
+
+                
+        
     
 
 
@@ -29,6 +37,10 @@ class Obra:
     def __init__(self,lugar,dia):
         self.lugar = lugar
         self.dia = dia  
+    
+    def adicionar_obra(self):
+
+
     
 
 
@@ -44,7 +56,8 @@ def main():
         validacao = re.search(r".+@.+\.com$",email) 
         if validacao:
             senha = input("Digite sua senha:")
-            criar_usuario = Usuario(nome,email,senha)
+            senha_hash = hashlib.sha256(senha.encode()).hexdigest()
+            criar_usuario = Interface_usuario(nome,email,senha)
             criar_usuario.sucesso()
             return criar_usuario
             
