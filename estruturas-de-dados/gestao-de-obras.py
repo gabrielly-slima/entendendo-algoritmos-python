@@ -38,19 +38,18 @@ def main():
     nome = input("Digite seu nome:")
 
     while True:
-        try:
-            email = input("Digite seu e-mail:")
-            validacao = re.search(r".com",email)
-            if validacao:
-                senha = input("Digite sua senha:")
-
-                criar_usuario = Usuario(nome,email,senha)
-                criar_usuario.sucesso()
-                return criar_usuario
+        email = input("Digite seu e-mail:")
+       
+        #.+	Pelo menos um caractere (qualquer) antes do @ | @	O caractere "@" obrigatório | .+	Pelo menos um caractere depois do @ | \.com	Literalmente ".com" (\. escapa o ponto) | $	Fim da string — ou seja, o .com tem que estar no final
+        validacao = re.search(r".+@.+\.com$",email) 
+        if validacao:
+            senha = input("Digite sua senha:")
+            criar_usuario = Usuario(nome,email,senha)
+            criar_usuario.sucesso()
+            return criar_usuario
             
-        except ValueError:
-            print("E-mail inválido")  
-            continue
+        else:
+            print("E-mail inválido. Tente novamente")  
 
             
             
