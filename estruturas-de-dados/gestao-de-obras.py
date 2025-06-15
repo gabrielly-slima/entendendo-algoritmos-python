@@ -72,27 +72,27 @@ class Sistema:
                 print(f"Bem-vindo(a) de volta, {usuario.nome}!")
                 self.menu_de_operacoes()
                 return
-
             else:
                 print("E-mail não cadastrado!")
-                opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
-                if opcao == "SIM":
-                    nome = input("Digite seu nome: ").strip()
-                    cadastro_feito = self.sign_in(nome, email, senha_hash)
-                    if cadastro_feito:
-                        print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
-                        self.menu_de_operacoes()  # Aqui segue para outro menu
-                        return
-                    else:
-                        print("E-mail inválido, tente novamente!")
-                        continue
-                
-                elif opcao == "NÃO":
-                    print("Encerrando o sistema...")
-                    break
+
+            opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
+            if opcao == "SIM":
+                nome = input("Digite seu nome: ").strip()
+                cadastro_feito = self.sign_in(nome, email, senha_hash)
+                if cadastro_feito:
+                    print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
+                    self.menu_de_operacoes()  # Aqui segue para outro menu
+                    return
                 else:
-                    print("Opção inválida, tente novamente.")
+                    print("E-mail inválido, tente novamente!")
                     continue
+                
+            elif opcao == "NÃO":
+                print("Encerrando o sistema...")
+                break
+            else:
+                print("Opção inválida, tente novamente.")
+                continue
 
 
 sistema = Sistema()
