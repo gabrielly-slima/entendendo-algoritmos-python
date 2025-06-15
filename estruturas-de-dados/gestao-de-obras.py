@@ -42,6 +42,7 @@ class Sistema:
     def sign_in(self,nome,email,senha):
         cadastro = Usuario(nome,email,senha)
         self.usuarios.append(cadastro)
+        return cadastro
 
     def log_in(self, email, senha_hash):
         for usuario in self.usuarios:
@@ -49,21 +50,28 @@ class Sistema:
                 return usuario
         return None
 
-
-       
-
     def menu_inicial(self):
-        print("GESTÃO OBRAS - BFX\n")
-        while True:
-            print("LOG IN - GESTÃO BFX")
-            email = input("Digite seu e-mail: ").strip()
-            if not re.search(r".+@.+\.com$",email): 
-                print("E-mail inválido, tente novamente!")
-                continue
-
+        def verificar_email():
+            while True:
+                email = input("Digite seu e-mail: ").strip()
+                if not re.search(r".+@.+\.com$",email): 
+                    print("E-mail inválido, tente novamente!")
+                    continue
+                else:
+                    return email
+    
+        def seguranca_senha():
             senha = input("Digite sua senha: ").strip()
             senha_hash = hashlib.sha256(senha.encode()).hexdigest()
-           
+            return senha_hash
+        
+        print("GESTÃO OBRAS - BFX\n")
+
+        while True:
+            print("LOG IN - GESTÃO BFX")
+            email = verificar_email()
+            senha_hash = seguranca_senha()
+
             usuario = self.log_in(email, senha_hash)
             if usuario:
                 print(f"Bem-vindo(a) de volta, {usuario.nome}!")
@@ -73,30 +81,22 @@ class Sistema:
                 print("E-mail não cadastrado!")
                 opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
 
-            if opcao == "SIM":
-                nome = input("Digite seu nome: ").strip()
-                email = input("Digite seu e-mail: ").strip()
-                validacao = re.search(r".+@.+\.com$",email) 
-                if validacao:
-                    senha = input("Digite sua senha: ").strip()
-                    senha_hash = hashlib.sha256(senha.encode()).hexdigest()
+                if opcao == "SIM":
+                    nome = input("Digite seu nome: ").strip()
+                    email = verificar_email()
+                    senha_hash = seguranca_senha()
                     cadastro_feito = self.sign_in(nome, email, senha_hash)
                     if cadastro_feito:
                         print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
                         self.menu_de_operacoes()  # Aqui segue para outro menu
                         return
+                
+                elif opcao == "NÃO":
+                    print("Encerrando o sistema...")
+                    break
                 else:
-                    print("E-mail inválido, tente novamente!")
+                    print("Opção inválida, tente novamente.")
                     continue
-                
-                
-            elif opcao == "NÃO":
-                print("Encerrando o sistema...")
-                break
-            else:
-                print("Opção inválida, tente novamente.")
-                continue
-
 
 sistema = Sistema()
 sistema.menu_inicial()
