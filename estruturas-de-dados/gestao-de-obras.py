@@ -71,13 +71,21 @@ class Sistema:
             if usuario:
                 print(f"Bem-vindo(a) de volta, {usuario.nome}!")
                 self.menu_de_operacoes()
-                return
-            else:
-                print("E-mail não cadastrado!")
+                break
+            
+            print("E-mail não cadastrado!")
 
             opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
             if opcao == "SIM":
                 nome = input("Digite seu nome: ").strip()
+                email = input("Digite seu e-mail: ").strip()
+                validacao = re.search(r".+@.+\.com$",email) 
+                if validacao:
+                    senha = input("Digite sua senha: ").strip()
+                    senha_hash = hashlib.sha256(senha.encode()).hexdigest()
+                else:
+                    print("E-mail inválido, tente novamente!")
+                    continue
                 cadastro_feito = self.sign_in(nome, email, senha_hash)
                 if cadastro_feito:
                     print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
