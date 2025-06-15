@@ -47,29 +47,37 @@ class Sistema:
     
     def log_in(self):
         while True:
+            print("Gestão BFX - LOG-IN")
             email = input("Digite seu e-mail: ").strip()
-            senha = input("Digite sua senha: ").strip()
-            senha_hash = hashlib.sha256(senha.encode()).hexdigest()
-
+            validacao = re.search(r".+@.+\.com$",email) 
+            if validacao:
+                senha = input("Digite sua senha: ").strip()
+                senha_hash = hashlib.sha256(senha.encode()).hexdigest()
+            else:
+                print("E-mail inválido, tente novamente!")
+                continue
 
             for usuario in self.usuarios:
-                if usuario.email == email and usuario.senha == senha_hash:
-                    print(f"Bem-vindo(a) de volta a GESTÃO OBRAS - BFX, {usuario.nome}!")
-                    self.menu_de_operacoes(usuario)
-                    return  # Sai da função log_in, login bem-sucedido
+                try:
+                    if usuario.email == email and usuario.senha == senha_hash:
+                        print(f"Bem-vindo(a) de volta a GESTÃO OBRAS - BFX, {usuario.nome}!")
+                        self.menu_de_operacoes(usuario)
+                        return  # Sai da função log_in, login bem-sucedido
 
-                elif usuario.email == email and usuario.senha != senha_hash:
-                    print("Senha incorreta. Tente novamente.")
-                    continue
+                    elif usuario.email == email and usuario.senha != senha_hash:
+                        print("Senha incorreta. Tente novamente.")
+                        continue
 
-                else:
-                    cadastrar = input("E-mail não cadastrado. Deseja se cadastrar? (SIM ou NÃO): ").upper().strip()
-                    if cadastrar == "SIM":
-                    self.sign_in()
+                    else:
+                        cadastrar = input("E-mail não cadastrado. Deseja se cadastrar? (SIM ou NÃO): ").upper().strip()
+                        if cadastrar == "SIM":
+                            self.sign_in()
                     
-                    elif cadastrar == "NÃO":
-                        print("Encerrando sistema...")
-                        break
+                        elif cadastrar == "NÃO":
+                            print("Encerrando sistema...")
+                            break
+                except ValueError:
+                    print("bobrinha")
             
 def main():
     try:
@@ -77,4 +85,5 @@ def main():
         sistema.log_in()
     except ValueError:
         print("ruik")
-    
+
+main()
