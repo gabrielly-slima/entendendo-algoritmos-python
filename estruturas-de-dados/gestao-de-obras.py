@@ -43,7 +43,7 @@ class Sistema:
         cadastro = Usuario(nome,email,senha)
         self.usuarios.append(cadastro)
 
-    def log_in(self, email, senha_hash):
+    def log_in(self,email,senha_hash):
         for usuario in self.usuarios:
             if usuario.email == email and usuario.senha == senha_hash:
                 return usuario  # Login bem-sucedido
@@ -78,10 +78,19 @@ class Sistema:
                 opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
                 if opcao == "SIM":
                     nome = input("Digite seu nome: ").strip()
-                    self.sign_in(nome, email, senha_hash)
-                    print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
-                    self.menu_de_operacoes()  # Aqui segue para outro menu
-                    return
+                    email = input("Digite seu e-mail: ").strip()
+                    validacao = re.search(r".+@.+\.com$",email) 
+                    if validacao:
+                        senha = input("Digite sua senha: ").strip()
+                        senha_hash = hashlib.sha256(senha.encode()).hexdigest()
+                        self.sign_in(nome, email, senha_hash)
+                        print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
+                        self.menu_de_operacoes()  # Aqui segue para outro menu
+                        return
+                    else:
+                        print("E-mail inválido, tente novamente!")
+                    continue
+                
                 elif opcao == "NÃO":
                     print("Encerrando o sistema...")
                     break
