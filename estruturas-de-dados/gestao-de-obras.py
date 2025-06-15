@@ -43,11 +43,16 @@ class Sistema:
         cadastro = Usuario(nome,email,senha)
         self.usuarios.append(cadastro)
 
-    def log_in(self,email,senha_hash):
+    def log_in(self, email, senha_hash):
         for usuario in self.usuarios:
-            if usuario.email == email and usuario.senha == senha_hash:
-                return usuario
-        return None
+            if usuario.email == email:
+                if usuario.senha == senha_hash:
+                    return usuario  # Login bem-sucedido
+                else:
+                    print("Senha incorreta.")
+                    return None
+            return None  # E-mail não encontrado
+
 
        
 
@@ -67,25 +72,23 @@ class Sistema:
             if usuario:
                 print(f"Bem-vindo(a) de volta, {usuario.nome}!")
                 self.menu_de_operacoes()
-
-            for usuario in self.usuarios:
-                if usuario.email == email and usuario.senha != senha:
-                    print("Senha incorreta!")
-            
-            print("Este e-mail não está cadastrado!")
-            opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
-            if opcao == "SIM":
-                nome = input("Digite seu nome: ").strip()
-                self.sign_in(nome, email, senha_hash)
-                print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
-                self.menu_de_operacoes()  # Aqui segue para outro menu
                 return
-            elif opcao == "NÃO":
-                print("Encerrando o sistema...")
-                break
+
             else:
-                print("Opção inválida, tente novamente.")
-                continue
+                print("E-mail não cadastrado!")
+                opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
+                if opcao == "SIM":
+                    nome = input("Digite seu nome: ").strip()
+                    self.sign_in(nome, email, senha_hash)
+                    print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
+                    self.menu_de_operacoes()  # Aqui segue para outro menu
+                    return
+                elif opcao == "NÃO":
+                    print("Encerrando o sistema...")
+                    break
+                else:
+                    print("Opção inválida, tente novamente.")
+                    continue
 
 sistema = Sistema()
 sistema.menu_inicial()
