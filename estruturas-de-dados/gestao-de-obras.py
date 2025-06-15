@@ -15,33 +15,30 @@
 import re
 import hashlib
 
-class Interface_usuario:
+class Usuario:
     def __init__(self,nome,email,senha):
         self.nome = nome
         self.email = email
         self.senha = senha
-    
-    def sucesso(self):
-        print(f"{self.nome}, bem-vinda a GESTÃO OBRAS - BFX")
-        try:
-            menu_principal = int(input("MENU PRINCIPAL\n1. Adicionar obra\n2.Ver Relatórios\n3. Consultar gastos"))
-            if menu_principal == 1:
-                Obra.adicionar_obra()
-
-                
-        
-    
-
 
 class Obra:
-    def __init__(self,lugar,dia):
-        self.lugar = lugar
-        self.dia = dia  
+    def __init__(self):
+        self.lugar = []
+        self.dia = []
     
-    def adicionar_obra(self):
+    #def adicionar_obra(self):
 
 
+class Sistema:
+    def __init__(self):
+        self.usuarios = []
+        self.obras = []
+        self.gastos = []
     
+    def sign_in(self,nome,email,senha):
+        cadastro = Usuario(nome,email,senha)
+        self.usuarios.append(cadastro)
+
 
 
 def main():
@@ -57,10 +54,16 @@ def main():
         if validacao:
             senha = input("Digite sua senha:")
             senha_hash = hashlib.sha256(senha.encode()).hexdigest()
-            criar_usuario = Interface_usuario(nome,email,senha)
-            criar_usuario.sucesso()
-            return criar_usuario
-            
+            sistema = Sistema()
+            sistema.sign_in(nome,email,senha_hash)
+            print(f"{nome}, bem-vinda a GESTÃO OBRAS - BFX")
+            try:
+                menu_principal = int(input("MENU PRINCIPAL\n1. Adicionar obra\n2.Ver Relatórios\n3. Consultar gastos"))
+                if menu_principal == 1:
+                    obra = Obra(lugar,dia)
+                    sistema.obras.append(obra)
+            except ValueError:
+                print("bosta")
         else:
             print("E-mail inválido. Tente novamente")  
 
