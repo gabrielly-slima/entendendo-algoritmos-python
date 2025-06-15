@@ -43,47 +43,42 @@ class Sistema:
         cadastro = Usuario(nome,email,senha)
         self.usuarios.append(cadastro)
 
-    
-    
-    def log_in(self):
+    def log_in(self,email,senha_hash):
+        for usuario in self.usuarios:
+            if usuario.email == email and usuario.senha == senha_hash:
+                return usuario
+        return None
+
+       
+
+    def menu_inicial(self):
+        print("GESTÃO OBRAS - BFX\n")
         while True:
-            print("Gestão BFX - LOG-IN")
             email = input("Digite seu e-mail: ").strip()
-            validacao = re.search(r".+@.+\.com$",email) 
-            if validacao:
-                senha = input("Digite sua senha: ").strip()
-                senha_hash = hashlib.sha256(senha.encode()).hexdigest()
-            else:
-                print("E-mail inválido, tente novamente!")
-                continue
+            senha = input("Digite sua senha: ").strip()
+            senha_hash = hashlib.sha256(senha.encode()).hexdigest()
 
             for usuario in self.usuarios:
-                try:
-                    if usuario.email == email and usuario.senha == senha_hash:
-                        print(f"Bem-vindo(a) de volta a GESTÃO OBRAS - BFX, {usuario.nome}!")
-                        self.menu_de_operacoes(usuario)
-                        return  # Sai da função log_in, login bem-sucedido
+                if usuario.email == email and usuario.senha == senha_hash:
+                    print(f"Bem-vindo(a) de volta, {usuario.nome}!")
+                    self.menu_de_operacoes(usuario)  # Aqui você chama outro menu
+                    return  # Login bem-sucedido, sai da função
 
-                    elif usuario.email == email and usuario.senha != senha_hash:
-                        print("Senha incorreta. Tente novamente.")
-                        continue
+            print("Este e-mail não está cadastrado ou a senha está incorreta.")
+            opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
+            if opcao == "SIM":
+                nome = input("Digite seu nome: ").strip()
+                self.sign_in(nome, email, senha_hash)
+                print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
+                self.menu_de_operacoes(nome)  # Aqui segue para outro menu
+                return
+            elif opcao == "NÃO":
+                print("Encerrando o sistema...")
+                break
+            else:
+                print("Opção inválida, tente novamente.")
 
-                    else:
-                        cadastrar = input("E-mail não cadastrado. Deseja se cadastrar? (SIM ou NÃO): ").upper().strip()
-                        if cadastrar == "SIM":
-                            self.sign_in()
-                    
-                        elif cadastrar == "NÃO":
-                            print("Encerrando sistema...")
-                            break
-                except ValueError:
-                    print("bobrinha")
-            
-def main():
-    try:
-        sistema = Sistema()
-        sistema.log_in()
-    except ValueError:
-        print("ruik")
-
-main()
+sistema = Sistema()
+sistema.menu_inicial()
+    
+    
