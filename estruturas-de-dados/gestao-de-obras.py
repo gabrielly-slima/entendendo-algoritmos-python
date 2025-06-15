@@ -78,12 +78,9 @@ class Sistema:
                 opcao = input("Deseja se cadastrar? (SIM/NÃO): ").upper().strip()
                 if opcao == "SIM":
                     nome = input("Digite seu nome: ").strip()
-                    email = input("Digite seu e-mail: ").strip()
-                    validacao = re.search(r".+@.+\.com$",email) 
-                    if validacao:
-                        senha = input("Digite sua senha: ").strip()
-                        senha_hash = hashlib.sha256(senha.encode()).hexdigest()
-                        self.sign_in(nome, email, senha_hash)
+                    
+                    cadastro_feito = self.sign_in(nome, email, senha_hash)
+                    if cadastro_feito:
                         print(f"Usuário cadastrado com sucesso. Bem-vindo(a), {nome}!")
                         self.menu_de_operacoes()  # Aqui segue para outro menu
                         return
@@ -98,8 +95,8 @@ class Sistema:
                     print("Opção inválida, tente novamente.")
                     continue
 
-while True:
-    sistema = Sistema()
-    sistema.menu_inicial()
+
+sistema = Sistema()
+sistema.menu_inicial()
     
     
