@@ -45,13 +45,12 @@ class Sistema:
 
     def log_in(self, email, senha_hash):
         for usuario in self.usuarios:
-            if usuario.email == email:
-                if usuario.senha == senha_hash:
-                    return usuario  # Login bem-sucedido
-                else:
-                    print("Senha incorreta.")
-                    return None
-            return None  # E-mail não encontrado
+            if usuario.email == email and usuario.senha == senha_hash:
+                return usuario  # Login bem-sucedido
+            else:
+                print("Senha incorreta.")
+                return None
+        return None  # E-mail não encontrado
 
 
        
@@ -90,7 +89,8 @@ class Sistema:
                     print("Opção inválida, tente novamente.")
                     continue
 
-sistema = Sistema()
-sistema.menu_inicial()
+while True:
+    sistema = Sistema()
+    sistema.menu_inicial()
     
     
