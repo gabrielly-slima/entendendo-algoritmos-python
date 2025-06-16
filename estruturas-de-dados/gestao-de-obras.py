@@ -29,7 +29,6 @@ class Obra:
     
     #def adicionar_obra(self):
 
-
 class Sistema:
     def __init__(self):
         self.usuarios = []
